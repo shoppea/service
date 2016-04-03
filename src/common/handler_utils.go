@@ -3,10 +3,12 @@ package common
 import (
 	"github.com/gin-gonic/gin"
 	"db"
+	"fmt"
 )
 
 func BindResponse(c *gin.Context,obj interface{}) (err error) {
 	err = c.BindJSON(&obj)
+	fmt.Println("%+v",obj)
 	return err
 }
 

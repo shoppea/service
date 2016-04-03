@@ -1,5 +1,5 @@
 package product
 
-type Product struct {
+type Product interface {
 
 }

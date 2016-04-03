@@ -1,4 +1,4 @@
-package route
+package main
 
 import (
 	"db"
@@ -18,6 +18,8 @@ func init() {
 func main() {
 	r := gin.Default()
 
-	r.GET("/product/:name",handler.FindProduct)
-	r.POST("/product",)
+	//r.GET("/product/:name",handler.FindProduct)
+	r.POST("/category",handler.CreateCategory)
+
+	r.Run(":8080")
 }

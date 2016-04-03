@@ -23,5 +23,7 @@ func main() {
 
 	r.POST("/gender",handler.CreateGender)
 
+	r.POST("/sub_category",handler.CreateSubCategory)
+
 	r.Run(":8080")
 }

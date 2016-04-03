@@ -5,7 +5,3 @@ type Category struct {
 	Id int
 }
 
-type SubCategory struct {
-	Id int
-	Name string
-}

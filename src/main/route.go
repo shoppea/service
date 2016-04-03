@@ -21,5 +21,7 @@ func main() {
 	//r.GET("/product/:name",handler.FindProduct)
 	r.POST("/category",handler.CreateCategory)
 
+	r.POST("/gender",handler.CreateGender)
+
 	r.Run(":8080")
 }

@@ -6,7 +6,7 @@ import (
 )
 
 func BindResponse(c *gin.Context,obj interface{}) (err error) {
-	err = c.BindJSON(obj)
+	err = c.BindJSON(&obj)
 	return err
 }
 
@@ -22,7 +22,7 @@ func InsertDB(obj interface{}) (err error) {
 	return
 }
 
-func GetAllRows(obj []interface{},name string) {
-	dbPool := db.SharedConnection()
-	dbPool.Where("name=?",name).Find(&obj)
-}
+//func GetAllRows(obj []interface{},name string) {
+//	dbPool := db.SharedConnection()
+//	dbPool.Where("name=?",name).Find(&obj)
+//}

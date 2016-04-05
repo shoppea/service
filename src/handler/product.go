@@ -5,6 +5,8 @@ import (
 	"product"
 	"common"
 	"github.com/Sirupsen/logrus"
+	"throw"
+	"db"
 )
 
 func FindProduct(c* gin.Context)  {
@@ -15,11 +17,29 @@ func FindProduct(c* gin.Context)  {
 
 func CreateProduct(c *gin.Context) {
 	var product product.Product
-	common.BindResponse(c,&product)
+	err := common.BindResponse(c,&product)
+	if err != nil {
+		throw.ErrorBadRequest(c,err)
+		return
+	}
 	logrus.Info("%+v",product)
-	product.Add(c)
-	//err := product.Add()
-	//if err != nil {
-	//	throw.ErrorDB(c,err)
-	//}
+	err = product.Add(c)
+	if err == nil {
+		throw.SuccessCreated(c,product)
+		return
+	}else {
+		throw.ErrorDB(c,err)
+		return
+	}
+}
+
+func GetAllProducts(c *gin.Context) {
+	var products []product.Product
+	dbPool := db.SharedConnection()
+	err := dbPool.Find(&products).Error
+	if err != nil {
+		throw.ErrorDB(c,err)
+	}else {
+		throw.SuccssOK(c,products)
+	}
 }

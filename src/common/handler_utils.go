@@ -9,9 +9,6 @@ import (
 
 func BindResponse(c *gin.Context,obj interface{}) (err error) {
 	err = c.BindJSON(obj)
-	if err != nil {
-		throw.ErrorBadRequest(c,err)
-	}
 	logrus.Info("%#v",obj)
 	return err
 }

@@ -27,3 +27,8 @@ func SharedConnection() ( *gorm.DB ){
 	})
 	return DBConnection
 }
+
+func GetConnection() *gorm.DB {
+	pool := SharedConnection()
+	return pool
+}

@@ -10,6 +10,9 @@ import (
 func BindResponse(c *gin.Context,obj interface{}) (err error) {
 	err = c.BindJSON(obj)
 	logrus.Info("%#v",obj)
+	if err != nil {
+
+	}
 	return err
 }
 

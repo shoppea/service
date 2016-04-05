@@ -1,9 +1,12 @@
 package user
 
-import "product"
+import (
+	"product"
+	"db"
+)
 
 type IUser interface {
-	Add()
+	Add() (err error)
 	AddToCart(product *product.Product)
 }
 
@@ -16,13 +19,16 @@ type Address struct {
 }
 
 type User struct {
-	IUser
-	UFirstName string
-	ULastName string
-	UAddress Address
-	UContact int
+	IUser		`gorm:"-"`
+	Id int
+	FirstName string        `json:"first_name"`
+	LastName string 	`json:"last_name"`
+	ContactNo string        	`json:"contact_no"`
+	Email string        	`json:"email"`
+	Password string         `json:"password"`
 }
 
-func (u *User ) Add() {
-	// Adding user to db
+func (u *User ) Add() (err error) {
+	dbPool := db.GetConnection()
+	return dbPool.Create(u).Error
 }

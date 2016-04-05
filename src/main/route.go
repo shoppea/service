@@ -5,6 +5,7 @@ import (
 	"github.com/Sirupsen/logrus"
 	"github.com/gin-gonic/gin"
 	"handler"
+	"net/http"
 )
 
 func init() {
@@ -28,6 +29,12 @@ func main() {
 
 	r.POST("/product",handler.CreateProduct)
 	r.GET("/products",handler.GetAllProducts)
+
+	r.POST("/user",handler.CreateUser)
+
+	r.GET("/help", func(c *gin.Context) {
+		c.JSON(http.StatusOK,r.Routes())
+	})
 
 	r.Run(":8080")
 }

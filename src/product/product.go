@@ -6,7 +6,7 @@ import (
 )
 
 type IProduct interface {
-	Add(c *gin.Context)
+	Add(c *gin.Context) (err error)
 	AddStock(quantity int)
 }
 
@@ -23,7 +23,7 @@ type Product struct {
 	Image string           //     `json:"image"`
 }
 
-func (p *Product ) Add(c *gin.Context) {
-	common.InsertDBWithContext(c,p)
+func (p *Product ) Add(c *gin.Context) (err error){
+	return common.InsertDBWithContext(c,p)
 }
 

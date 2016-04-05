@@ -18,14 +18,16 @@ func init() {
 func main() {
 	r := gin.Default()
 
-	//r.GET("/product/:name",handler.FindProduct)
 	r.POST("/category",handler.CreateCategory)
+	r.GET("/categories",handler.GetAllCategories)
 
 	r.POST("/gender",handler.CreateGender)
+	r.GET("/genders",handler.GetAllGenders)
 
 	r.POST("/sub_category",handler.CreateSubCategory)
 
 	r.POST("/product",handler.CreateProduct)
+	r.GET("/products",handler.GetAllProducts)
 
 	r.Run(":8080")
 }

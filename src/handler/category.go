@@ -4,6 +4,8 @@ import (
 	"github.com/gin-gonic/gin"
 	"product"
 	"common"
+	"db"
+	"throw"
 )
 
 func CreateCategory(c *gin.Context)  {
@@ -16,4 +18,15 @@ func CreateSubCategory(c *gin.Context) {
 	var subCategory product.SubCategory
 	common.BindResponse(c,&subCategory)
 	common.InsertDB(subCategory)
+}
+
+func GetAllCategories(c *gin.Context) {
+	var categories []product.Category
+	dbPool := db.SharedConnection()
+	err := dbPool.Find(&categories).Error
+	if err != nil {
+		throw.ErrorDB(c,err)
+	}else {
+		throw.SuccssOK(c,categories)
+	}
 }

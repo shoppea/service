@@ -18,11 +18,11 @@ func SharedConnection() ( *gorm.DB ){
 		var err error
 		DBConnection,err = gorm.Open("mysql", "root@tcp(127.0.0.1:3306)/snabar_staging")
 		DBConnection.LogMode(true)
-		logrus.Info("Getting connection from MYSql")
 		if err != nil {
 			logrus.Info("Error encoutered while getting connection from mysql")
 			fmt.Println(err)
 		}
+		logrus.Info("Getting connection from MYSQL")
 		return
 	})
 	return DBConnection

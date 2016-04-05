@@ -25,5 +25,7 @@ func main() {
 
 	r.POST("/sub_category",handler.CreateSubCategory)
 
+	r.POST("/product",handler.CreateProduct)
+
 	r.Run(":8080")
 }

@@ -1,3 +1,4 @@
+[![Stories in Ready](https://badge.waffle.io/shoppea/service.png?label=ready&title=Ready)](https://waffle.io/shoppea/service)
 # Fracto - Bundle of Services
 
 1.User

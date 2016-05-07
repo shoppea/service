@@ -10,7 +10,7 @@ func AfterService(c *gin.Context, err error, obj interface{}) {
 		throw.ErrorBadRequest(c,err)
 		return
 	}else{
-		throw.SuccssOK(c,obj)
+		throw.SuccessOK(c,obj)
 		return
 	}
 }

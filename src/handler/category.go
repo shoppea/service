@@ -22,11 +22,11 @@ func CreateSubCategory(c *gin.Context) {
 
 func GetAllCategories(c *gin.Context) {
 	var categories []product.Category
-	dbPool := db.SharedConnection()
+	dbPool := db.SC()
 	err := dbPool.Find(&categories).Error
 	if err != nil {
 		throw.ErrorDB(c,err)
 	}else {
-		throw.SuccssOK(c,categories)
+		throw.SuccessOK(c,categories)
 	}
 }

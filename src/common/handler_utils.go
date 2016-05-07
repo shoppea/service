@@ -11,13 +11,14 @@ func BindResponse(c *gin.Context,obj interface{}) (err error) {
 	err = c.BindJSON(obj)
 	logrus.Info("%#v",obj)
 	if err != nil {
-
+		throw.ErrorDB(c,err)
+		c.Abort()
 	}
 	return err
 }
 
 func InsertDataBase(c *gin.Context,obj interface{}) (err error) {
-	dbPool := db.SharedConnection()
+	dbPool := db.SC()
 	err = dbPool.Error
 	if err != nil {
 		throw.ErrorDB(c,err)
@@ -29,7 +30,7 @@ func InsertDataBase(c *gin.Context,obj interface{}) (err error) {
 
 
 func InsertDBWithContext(c *gin.Context,obj interface{}) (err error) {
-	dbPool := db.SharedConnection()
+	dbPool := db.SC()
 	err = dbPool.Error
 	if err != nil {
 		throw.ErrorDB(c,err)
@@ -43,7 +44,7 @@ func InsertDBWithContext(c *gin.Context,obj interface{}) (err error) {
 }
 
 func InsertDB(obj interface{}) (err error) {
-	dbPool := db.SharedConnection()
+	dbPool := db.SC()
 	err = dbPool.Error
 	if err != nil {
 		return

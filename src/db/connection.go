@@ -13,7 +13,10 @@ import (
 var DBConnection *gorm.DB
 var once sync.Once
 
-func SharedConnection() ( *gorm.DB ){
+// Abbr. Shared Connection cool to connect with mysql database
+// GoLang DB instance automatically handles database pooling
+
+func SC() ( *gorm.DB ){
 	once.Do(func() {
 		var err error
 		DBConnection,err = gorm.Open("mysql", "root@tcp(127.0.0.1:3306)/snabar_staging")
@@ -29,6 +32,6 @@ func SharedConnection() ( *gorm.DB ){
 }
 
 func GetConnection() *gorm.DB {
-	pool := SharedConnection()
+	pool := SC()
 	return pool
 }

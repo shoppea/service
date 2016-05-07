@@ -18,10 +18,10 @@ func FindProduct(c*gin.Context) {
 		if err != nil {
 			throw.ErrorDB(c, err)
 		} else {
-			throw.SuccssOK(c, products);
+			throw.SuccessOK(c, products);
 		}
 	} else {
-		throw.SuccssOK(c, products);
+		throw.SuccessOK(c, products);
 	}
 }
 
@@ -50,6 +50,6 @@ func GetAllProducts(c *gin.Context) {
 	if err != nil {
 		throw.ErrorDB(c, err)
 	} else {
-		throw.SuccssOK(c, products)
+		throw.SuccessOK(c, products)
 	}
 }

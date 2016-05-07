@@ -18,7 +18,7 @@ func BindResponse(c *gin.Context,obj interface{}) (err error) {
 }
 
 func InsertDataBase(c *gin.Context,obj interface{}) (err error) {
-	dbPool := db.SC()
+	dbPool := db.SharedConnection()
 	err = dbPool.Error
 	if err != nil {
 		throw.ErrorDB(c,err)
@@ -30,7 +30,7 @@ func InsertDataBase(c *gin.Context,obj interface{}) (err error) {
 
 
 func InsertDBWithContext(c *gin.Context,obj interface{}) (err error) {
-	dbPool := db.SC()
+	dbPool := db.SharedConnection()
 	err = dbPool.Error
 	if err != nil {
 		throw.ErrorDB(c,err)
@@ -44,7 +44,7 @@ func InsertDBWithContext(c *gin.Context,obj interface{}) (err error) {
 }
 
 func InsertDB(obj interface{}) (err error) {
-	dbPool := db.SC()
+	dbPool := db.SharedConnection()
 	err = dbPool.Error
 	if err != nil {
 		return

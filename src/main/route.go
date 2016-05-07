@@ -38,5 +38,5 @@ func main() {
 
 	r.GET("/search", handler.FindProduct)
 
-	r.Run(":8080")
+	r.Run(":8081")
 }

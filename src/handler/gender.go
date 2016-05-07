@@ -16,7 +16,7 @@ func CreateGender(c *gin.Context) {
 
 func GetAllGenders(c *gin.Context) {
 	var genders []product.Gender
-	dbPool := db.SC()
+	dbPool := db.SharedConnection()
 	err := dbPool.Find(&genders).Error
 	if err != nil {
 		throw.ErrorDB(c,err)

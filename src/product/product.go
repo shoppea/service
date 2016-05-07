@@ -26,4 +26,3 @@ type Product struct {
 func (p *Product ) Add(c *gin.Context) (err error){
 	return common.InsertDBWithContext(c,p)
 }
-

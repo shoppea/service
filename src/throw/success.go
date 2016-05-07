@@ -9,6 +9,6 @@ func SuccessCreated(c *gin.Context,obj interface{})  {
 	c.JSON(http.StatusCreated,obj)
 }
 
-func SuccssOK(c *gin.Context,obj interface{})  {
+func SuccessOK(c *gin.Context,obj interface{})  {
 	c.JSON(http.StatusOK,obj)
 }

@@ -19,13 +19,14 @@ type Address struct {
 }
 
 type User struct {
-	IUser		`gorm:"-"`
-	Id int
+	IUser			`gorm:"-"`
+	Id int                  `json:"id"`
 	FirstName string        `json:"first_name"`
 	LastName string 	`json:"last_name"`
-	ContactNo string        	`json:"contact_no"`
+	ContactNo string        `json:"contact_no"`
 	Email string        	`json:"email"`
 	Password string         `json:"password"`
+	Carts []Cart        	`json:"carts"`
 }
 
 func (u *User ) Add() (err error) {

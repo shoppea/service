@@ -35,11 +35,11 @@ func CreateProduct(c *gin.Context) {
 
 func GetAllProducts(c *gin.Context) {
 	var products []product.Product
-	dbPool := db.SharedConnection()
+	dbPool := db.SC()
 	err := dbPool.Find(&products).Error
 	if err != nil {
 		throw.ErrorDB(c,err)
 	}else {
-		throw.SuccssOK(c,products)
+		throw.SuccessOK(c,products)
 	}
 }

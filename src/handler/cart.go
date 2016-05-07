@@ -17,7 +17,7 @@ func AddToCart(c *gin.Context)  {
 		throw.ErrorBadRequest(c,err)
 		return
 	}
-	dbPool := db.SC()
+	dbPool := db.SharedConnection()
 	err = dbPool.Create(&cart).Error
 	if err != nil {
 		throw.ErrorDB(c,err)
@@ -36,7 +36,7 @@ func GetUserCart(c *gin.Context) {
 		return
 	}
 	user := user.User{Id:id}
-	dbPool := db.SC()
+	dbPool := db.SharedConnection()
 	err = dbPool.Model(&user).Related(&cart).Error
 	if err != nil {
 		throw.ErrorDB(c,err)

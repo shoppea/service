@@ -37,7 +37,7 @@ func Authenticate(c *gin.Context)  {
 		throw.ErrorBadRequest(c,err)
 		return
 	}
-	dbPool := db.SC()
+	dbPool := db.SharedConnection()
 	err = dbPool.Where("email = ? AND password = ?", creds.UserName,creds.Password).Find(&user).Error
 	logrus.Info("User is : %+v", user.Id)
 	if user.Id > 0 {

@@ -5,11 +5,14 @@ import (
 	"github.com/Sirupsen/logrus"
 	"github.com/gin-gonic/gin"
 	"handler"
-	"net/http" 
+	"net/http"
+	"path/filepath"
 )
 
 func init() {
+	// Create database connection pool with mysql db
 	dbPool := db.SharedConnection()
+	// Any error would simply stops execution
 	if dbPool.Error != nil {
 		logrus.Error(dbPool.Error)
 		panic("failed to initialse database")
@@ -22,6 +25,11 @@ func main() {
 	// Serve static swagger pages for api docs
 	r.StaticFile("/swagger_api","swagger.json")
 	r.StaticFS("/docs",http.Dir("../../dist"))
+
+	r.GET("/fs", func(c *gin.Context) {
+		files, _ := filepath.Glob("*")
+		c.JSON(200,files)
+	})
 
 	// swagger:route GET /categories category
 	//
@@ -79,7 +87,9 @@ func main() {
 	// swagger:route POST /gender gender
 	//
 	// Create new gender
-	// We added all available genders of planet earth, so please don't play with API ;)
+
+	// We added all available genders of planet earth,
+	// so please don't play with API ;)
 	//
 	//     Consumes:
 	//     - application/json

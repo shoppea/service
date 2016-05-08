@@ -19,9 +19,9 @@ func init() {
 func main() {
 	r := gin.Default()
 
-	r.StaticFile("/swagger_api","./src/main/swagger.json")
+	r.StaticFile("/swagger_api","../src/main/swagger.json")
 
-	r.StaticFS("/docs",http.Dir("./dist"))
+	r.StaticFS("/docs",http.Dir("../dist"))
 
 	r.POST("/category", handler.CreateCategory)
 	r.GET("/categories", handler.GetAllCategories)

@@ -7,6 +7,8 @@ import (
 	"handler"
 	"net/http"
 	"path/filepath"
+	"github.com/itsjamie/gin-cors"
+	"time"
 )
 
 func init() {
@@ -21,6 +23,16 @@ func init() {
 
 func main() {
 	r := gin.Default()
+
+	r.Use(cors.Middleware(cors.Config{
+		Origins:        "*",
+		Methods:        "GET, PUT, POST, DELETE",
+		RequestHeaders: "Origin, Authorization, Content-Type",
+		ExposedHeaders: "",
+		MaxAge: 50 * time.Second,
+		Credentials: true,
+		ValidateHeaders: false,
+	}))
 
 	// Serve static swagger pages for api docs
 	r.StaticFile("/swagger_api","swagger.json")

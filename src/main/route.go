@@ -23,6 +23,22 @@ func main() {
 
 	r.StaticFS("/docs",http.Dir("../dist"))
 
+	// swagger:route GET /category listCategories category
+	//
+	// Lists all available categories
+	//
+	// This will show all available main categories by default.
+	// You can get subcategories in /subcategory api
+	//
+	//     Produces:
+	//     - application/json
+	//
+	//     Schemes: http, https
+	//
+	//     Responses:
+	//       default: genericError
+	//       200: someResponse
+	//       422: validationError
 	r.POST("/category", handler.CreateCategory)
 	r.GET("/categories", handler.GetAllCategories)
 

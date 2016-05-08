@@ -15,7 +15,6 @@ var once sync.Once
 
 // Abbr. Shared Connection cool to connect with mysql database
 // GoLang DB instance automatically handles database pooling
-
 func SharedConnection() ( *gorm.DB ){
 	once.Do(func() {
 		var err error

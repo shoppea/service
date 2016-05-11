@@ -35,8 +35,8 @@ func main() {
 	}))
 
 	// Serve static swagger pages for api docs
-	r.StaticFile("/swagger_api","swagger.json")
-	r.StaticFS("/docs",http.Dir("../../dist"))
+	r.StaticFile("/swagger_api","./src/main/swagger.json")
+	r.StaticFS("/docs",http.Dir("./dist"))
 
 	r.GET("/fs", func(c *gin.Context) {
 		files, _ := filepath.Glob("*")
@@ -177,6 +177,22 @@ func main() {
 		c.JSON(http.StatusOK, r.Routes())
 	})
 
+	// swagger:route GET /search product
+	//
+	// Search products with name containing search string
+	//
+	//     Consumes:
+	//     -
+	//
+	//     Produces:
+	//     - application/json
+	//
+	//     Schemes: http, https
+	//
+	//     Responses:
+	//       default: genericError
+	//       200: someResponse
+	//       422: validationError
 	r.GET("/search", handler.FindProduct)
 
 	r.Run(":8081")

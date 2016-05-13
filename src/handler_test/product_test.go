@@ -22,6 +22,7 @@ func TestGetllProducts(t *testing.T) {
 	}
 	resp := httptest.NewRecorder()
 	router.ServeHTTP(resp, req)
+	fmt.Println(resp.Body)
 	assert.Equal(t, resp.Code, 200)
 }
 

@@ -26,10 +26,9 @@ func TestGetllProducts(t *testing.T) {
 }
 
 func TestFindProducts(t *testing.T) {
-	gin.SetMode(gin.TestMode);
-	router := gin.Default();
-	handler := handler.GetAllProducts
-	router.GET("/search", handler)
+	gin.SetMode(gin.TestMode)
+	router := gin.Default()
+	router.GET("/search", handler.FindProduct)
 	req, err := http.NewRequest("GET", "/search?query=5s", nil)
 	if err != nil {
 		fmt.Println(err)

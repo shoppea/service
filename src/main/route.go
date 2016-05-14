@@ -22,8 +22,10 @@ func init() {
 }
 
 func main() {
+	// Get Gin Engine
 	r := gin.Default()
 
+	// Adding middleware for CORS
 	r.Use(cors.Middleware(cors.Config{
 		Origins:        "*",
 		Methods:        "GET, PUT, POST, DELETE",

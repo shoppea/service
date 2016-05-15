@@ -37,7 +37,7 @@ func TestFindProducts(t *testing.T) {
 }
 
 
-func TestFindProducts_WithEmptySearchString(t *testing.T){
+func TestFindProductsNegative(t *testing.T){
 	router := common.GetTestModeGinRouter();
 	router.GET("/search", FindProduct)
 	req, err := http.NewRequest("GET", "/search?query=", nil)

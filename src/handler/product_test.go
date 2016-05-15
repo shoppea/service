@@ -6,12 +6,11 @@ import (
 	"net/http/httptest"
 	"github.com/stretchr/testify/assert"
 	"net/http"
-	"github.com/gin-gonic/gin"
+	"common"
 )
 
 func TestGetAllProducts(t *testing.T) {
-	gin.SetMode(gin.TestMode);
-	router := gin.Default();
+	router := common.GetTestModeGinRouter();
 	handler := GetAllProducts
 	router.GET("/products", handler)
 	req, err := http.NewRequest("GET", "/products", nil)
@@ -25,10 +24,23 @@ func TestGetAllProducts(t *testing.T) {
 }
 
 func TestFindProducts(t *testing.T) {
-	gin.SetMode(gin.TestMode)
-	router := gin.Default()
+	router := common.GetTestModeGinRouter();
 	router.GET("/search", FindProduct)
 	req, err := http.NewRequest("GET", "/search?query=5s", nil)
+	if err != nil {
+		fmt.Println(err)
+	}
+	resp := httptest.NewRecorder()
+	router.ServeHTTP(resp, req)
+	fmt.Println(resp.Body)
+	assert.Equal(t, resp.Code, 200)
+}
+
+
+func TestFindProductsNegative(t *testing.T){
+	router := common.GetTestModeGinRouter();
+	router.GET("/search", FindProduct)
+	req, err := http.NewRequest("GET", "/search?query=", nil)
 	if err != nil {
 		fmt.Println(err)
 	}

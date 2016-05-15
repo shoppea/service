@@ -2,7 +2,6 @@ package handler
 
 import (
 	"testing"
-	"github.com/gin-gonic/gin"
 	"fmt"
 	"net/http/httptest"
 	"github.com/stretchr/testify/assert"
@@ -11,6 +10,7 @@ import (
 	"db"
 	"product"
 	"strings"
+	"common"
 )
 
 //*********************************************
@@ -36,8 +36,7 @@ func _TearDown() {
 
 
 func TestGetAllGenders(t *testing.T) {
-	gin.SetMode(gin.TestMode);
-	router := gin.Default();
+	router := common.GetTestModeGinRouter();
 	router.GET("/genders", GetAllGenders)
 	req, err := http.NewRequest("GET", "/genders", nil)
 	if err != nil {
@@ -50,8 +49,7 @@ func TestGetAllGenders(t *testing.T) {
 }
 
 func TestCreateGender(t *testing.T) {
-	gin.SetMode(gin.TestMode);
-	router := gin.Default();
+	router := common.GetTestModeGinRouter();
 	router.POST("/gender", CreateGender);
 
 	testGenderJson := `{"id":9,"name":"TestGender"}`;

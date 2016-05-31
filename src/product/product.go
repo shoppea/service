@@ -23,6 +23,6 @@ type Product struct {
 	Image string           //     `json:"image"`
 }
 
-func (p *Product ) Add(c *gin.Context) (err error){
+func (p *Product) Add(c *gin.Context) (err error){
 	return common.InsertDBWithContext(c,p)
 }

@@ -197,5 +197,26 @@ func main() {
 	//       422: validationError
 	r.GET("/search", handler.FindProduct)
 
+
+	// swagger:route POST /notify_me coming_soon
+	//
+	// Handler to accept user email
+	// Addresses and add it to database
+	//
+	//     Consumes:
+	//     -
+	//
+	//     Produces:
+	//     - application/json
+	//
+	//     Schemes: http, https
+	//
+	//     Responses:
+	//       default: genericError
+	//       201: someResponse
+	//       422: validationError
+	r.POST("/notify_me",handler.ComingSoon)
+
+
 	r.Run(":8081")
 }

@@ -17,5 +17,6 @@ type NotifyUser struct {
 // database
 func (u *NotifyUser) RegisterForNotify() error {
 	dbPool := db.SharedConnection()
+	u.CreatedAt = time.Now()
 	return dbPool.Create(u).Error
 }

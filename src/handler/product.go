@@ -21,7 +21,7 @@ func FindProduct(c*gin.Context) {
 			throw.SuccessOK(c, products);
 		}
 	} else {
-		throw.SuccessOK(c, products);
+		throw.SuccessOK(c, []product.Product{});
 	}
 }
 

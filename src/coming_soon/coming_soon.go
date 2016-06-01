@@ -2,19 +2,20 @@ package coming_soon
 
 import (
 	"db"
+	"time"
 )
 
 // User struct which will get
 // retrieved by user from
 // coming_soon page
-type User struct {
+type NotifyUser struct {
 	Email string
-	//Date time.UnixDate
+	CreatedAt time.Time
 }
 
 // Register this user to
 // database
-func (u *User ) RegisterForNotify() error {
+func (u *NotifyUser) RegisterForNotify() error {
 	dbPool := db.SharedConnection()
 	return dbPool.Create(u).Error
 }

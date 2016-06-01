@@ -13,7 +13,7 @@ import (
 // page and will add it to
 // database
 func ComingSoon(c *gin.Context) {
-	var u coming_soon.User
+	var u coming_soon.NotifyUser
 	common.BindResponse(c,&u)
 	err := u.RegisterForNotify()
 	if err != nil {

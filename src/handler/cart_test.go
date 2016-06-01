@@ -2,16 +2,15 @@ package handler
 
 import (
 	"testing"
-	"github.com/gin-gonic/gin"
 	"fmt"
 	"net/http/httptest"
 	"github.com/stretchr/testify/assert"
 	"net/http"
+	"common"
 )
 
 func TestGetUserCart(t *testing.T) {
-	gin.SetMode(gin.TestMode);
-	router := gin.Default();
+	router := common.GetTestModeGinRouter();
 	router.GET("/cart/:id", GetUserCart)
 	req, err := http.NewRequest("GET", "/cart/6", nil)
 	if err != nil {

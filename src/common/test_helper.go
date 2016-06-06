@@ -5,10 +5,8 @@ import (
 	//"strings"
 )
 
-//func GetGinEngine(route string, method string){
-//	gin.SetMode(gin.TestMode)
-//	r := gin.Default()
-//	if strings.Compare() {
-//
-//	}
-//}
+func GetGinEngine(route string, method string){
+	// gin.SetMode(gin.TestMode)
+	// _ := gin.Default()
+
+}

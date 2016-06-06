@@ -17,8 +17,8 @@ var once sync.Once
 func SharedConnection() (*gorm.DB) {
 	once.Do(func() {
 		var err error
-		//DBConnection,err = gorm.Open("mysql", "root:root@tcp(ec2-54-164-31-179.compute-1.amazonaws.com:3306)/snabar_staging")
-		DBConnection, err = gorm.Open("mysql", "root@tcp(127.0.0.1:3306)/snabar_staging")
+		DBConnection,err = gorm.Open("mysql", "root:root@tcp(ec2-54-164-31-179.compute-1.amazonaws.com:3306)/snabar_staging")
+		//DBConnection, err = gorm.Open("mysql", "root@tcp(127.0.0.1:3306)/snabar_staging")
 		DBConnection.LogMode(true)
 		if err != nil {
 			logrus.Info("Error encoutered while getting connection from mysql")

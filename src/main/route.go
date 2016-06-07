@@ -218,5 +218,24 @@ func main() {
 	r.POST("/notify_me",handler.ComingSoon)
 
 
+	// swagger:route GET /r_users registered_users
+	//
+	// Returns a list of users registered via
+	// Notify me
+	//
+	//     Consumes:
+	//     -
+	//
+	//     Produces:
+	//     - application/json
+	//
+	//     Schemes: http, https
+	//
+	//     Responses:
+	//       default: genericError
+	//       200: someResponse
+	//       422: validationError
+	r.GET("/r_users", handler.ComingSoonUsers)
+
 	r.Run(":8081")
 }

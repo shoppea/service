@@ -21,3 +21,10 @@ func ComingSoon(c *gin.Context) {
 	}
 	throw.SuccessCreated(c,u)
 }
+
+func ComingSoonUsers(c *gin.Context) {
+	users, err := coming_soon.GetAllRegisteredUsers(); if err != nil {
+		throw.ErrorDB(c,err)
+	}
+	throw.SuccessOK(c,users)
+}

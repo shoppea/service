@@ -10,8 +10,8 @@ import (
 // retrieved by user from
 // coming_soon page
 type NotifyUser struct {
-	Email string
-	CreatedAt time.Time
+	Email string        `json:"email"`
+	CreatedAt time.Time        `json:"created_at"`
 }
 
 // Register this user to
@@ -23,4 +23,12 @@ func (u *NotifyUser) RegisterForNotify() error {
 		return errors.New("Bad gateway")
 	}
 	return dbPool.Create(u).Error
+}
+
+// This API Call returns all registered
+// users
+func GetAllRegisteredUsers() (users []NotifyUser,err error) {
+	dbPool := db.SharedConnection()
+	err = dbPool.Find(&users).Error
+	return users,err
 }

@@ -237,5 +237,24 @@ func main() {
 	//       422: validationError
 	r.GET("/r_users", handler.ComingSoonUsers)
 
+
+	// swagger:route POST /shopper/new shopper
+	//
+	// Add new Shopper
+	//
+	//     Consumes:
+	//     -
+	//
+	//     Produces:
+	//     - application/json
+	//
+	//     Schemes: http, https
+	//
+	//     Responses:
+	//       default: genericError
+	//       201: ShopperCreate
+	//       422: validationError
+	r.POST("/shopper/new", handler.AddShopper)
+
 	r.Run(":8081")
 }

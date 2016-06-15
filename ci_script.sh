@@ -2,6 +2,10 @@
 
 docker build -t snabar/api-service .
 echo "$(tput setaf 2)Building image $(tput sgr0)"
+    docker stop snabar-api-service
+    echo "$(tput setaf 1)Stopping Docker image $(tput sgr0)"
+    docker rm snabar-api-service
+    echo "$(tput setaf 1)Removing Docker image $(tput sgr0)"
 docker run -d --name snabar-api-service -p 8081:8081 snabar/api-service
 echo "$(tput setaf 2)Running container for the first time $(tput sgr0)"
 

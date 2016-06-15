@@ -10,4 +10,6 @@ WORKDIR /snabar_service/src/main
 
 ENV GOPATH=/snabar_service/
 
+RUN go get
+
 CMD ["go","run", "/snabar_service/src/main/route.go"]

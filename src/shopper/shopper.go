@@ -9,14 +9,6 @@ type IShopper interface{
 	Add()
 }
 
-type Address struct {
-	ShopName string `json:"shop_name"`
-	StreetName string        `json:"street_name"`
-	AreaName string        `json:"area"`
-	City string        `json:"city"`
-	State string        `json:"state"`
-}
-
 // swagger:response ShopperCreate
 type Shopper struct {
 	common.BaseService	`gorm:"-"`

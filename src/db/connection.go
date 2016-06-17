@@ -17,7 +17,7 @@ var once sync.Once
 func SharedConnection() (*gorm.DB) {
 	once.Do(func() {
 		var err error
-		DBConnection,err = gorm.Open("mysql", "root:root@tcp(54.174.5.112:3306)/snabar_staging?parseTime=true")
+		DBConnection,err = gorm.Open("mysql", "root:root@tcp(snabar.com:3306)/snabar_staging?parseTime=true")
 		//DBConnection, err = gorm.Open("mysql", "root@tcp(127.0.0.1:3306)/snabar_staging")
 		DBConnection.LogMode(true)
 		if err != nil {
